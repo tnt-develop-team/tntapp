@@ -1,0 +1,8 @@
+{
+  "generator-jasmine": {},
+  "generator-karma": {
+    "frameworks": "jasmine",
+    "browsers": "chrome",
+    "bower-components-path": "bower_components"
+  }
+}
