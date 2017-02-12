@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>TnT Tools</ion-title>
+    <ion-buttons end>
+      <button ion-button color="light">Login</button>
+      <button ion-button color="light">Signup</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar color="primary" (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Category</ion-label>
+      <ion-select (ionChange)="changeCategory()" [(ngModel)]="category" name="category">
+        <ion-option value="Lawn Mowers">Lawn Mowers</ion-option>
+        <ion-option value="Snow Blowers">Snow Blowers</ion-option>
+        <ion-option value="Vehicles">Vehicles</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="https://images-na.ssl-images-amazon.com/images/I/41qBlHdmm6L._AC_US160_.jpg">
+      </ion-thumbnail>
+      <h2>Lawn Mower 1</h2>
+      <button ion-button clear item-right (click)="viewItem(item.data)">View</button>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="https://images-na.ssl-images-amazon.com/images/I/41qBlHdmm6L._AC_US160_.jpg">
+      </ion-thumbnail>
+      <h2>Lawn Mower 2</h2>
+      <button ion-button clear item-right (click)="viewItem(item.data)">View</button>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="https://images-na.ssl-images-amazon.com/images/I/41qBlHdmm6L._AC_US160_.jpg">
+      </ion-thumbnail>
+      <h2>Lawn Mower 3</h2>
+      <button ion-button clear item-right (click)="viewItem(item.data)">View</button>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="https://images-na.ssl-images-amazon.com/images/I/41qBlHdmm6L._AC_US160_.jpg">
+      </ion-thumbnail>
+      <h2>Lawn Mower 4</h2>
+      <button ion-button clear item-right (click)="viewItem(item.data)">View</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
