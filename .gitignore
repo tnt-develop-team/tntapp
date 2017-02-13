@@ -16,11 +16,10 @@ npm-debug.log*
 .sass-cache/
 .tmp/
 .versions/
+bower_components/
 coverage/
 dist/
 node_modules/
-bower_components/
-bower_components/jasmine-core/
 tmp/
 temp/
 hooks/
