@@ -17,6 +17,7 @@ npm-debug.log*
 .tmp/
 .versions/
 bower_components/
+bower_components/jasmine-core/,
 coverage/
 dist/
 node_modules/
