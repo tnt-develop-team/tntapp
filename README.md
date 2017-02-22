@@ -19,6 +19,10 @@ FrontEnd for Tool Sharing Application
 * To run e2e test: `npm run e2e`
 * Deployment instructions
 
+### Ionic2 command tips
+
+* generate page: `ionic g page <pageName>`
+* generate provider: `ionic g provider <providerName>`
 
 ### Continuous Integration ###
 * Travis CI
