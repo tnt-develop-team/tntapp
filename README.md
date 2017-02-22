@@ -15,9 +15,14 @@ FrontEnd for Tool Sharing Application
 * For the first time, run `npm install`
 * Run `ionic serve`
 * Open browser, navigate to http://localhost:8100
-* How to run tests
+* To run unit test: `npm test`
+* To run e2e test: `npm run e2e`
 * Deployment instructions
 
+### Ionic2 command tips
+
+* generate page: `ionic g page <pageName>`
+* generate provider: `ionic g provider <providerName>`
 
 ### Continuous Integration ###
 * Travis CI
