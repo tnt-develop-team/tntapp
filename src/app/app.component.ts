@@ -3,15 +3,24 @@ import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
-
+import { Stormpath } from 'angular-stormpath';
+import { LoginPage } from 'angular-stormpath-ionic';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = TabsPage;
+  rootPage;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform, private stormpath: Stormpath) {
+    stormpath.user$.subscribe(user => {
+      if (!user) {
+        this.rootPage = LoginPage;
+      } else {
+        this.rootPage = TabsPage;
+      }
+    });
+    
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

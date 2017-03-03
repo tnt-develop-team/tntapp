@@ -6,6 +6,15 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { StormpathConfiguration, StormpathModule } from 'angular-stormpath';
+import { StormpathIonicModule, LoginPage, ForgotPasswordPage, RegisterPage } from 'angular-stormpath-ionic';
+
+export function stormpathConfig(): StormpathConfiguration {
+  let spConfig: StormpathConfiguration = new StormpathConfiguration();
+  spConfig.endpointPrefix = 'http://localhost:8080';
+  return spConfig;
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -15,7 +24,9 @@ import { TabsPage } from '../pages/tabs/tabs';
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    StormpathModule,
+    StormpathIonicModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -23,8 +34,14 @@ import { TabsPage } from '../pages/tabs/tabs';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage,
+    ForgotPasswordPage,
+    RegisterPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+      {provide: ErrorHandler, useClass: IonicErrorHandler},
+      {provide: StormpathConfiguration, useFactory: stormpathConfig}
+    ]
 })
 export class AppModule {}
