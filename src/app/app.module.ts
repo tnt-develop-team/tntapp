@@ -12,6 +12,7 @@ import { StormpathIonicModule, LoginPage, ForgotPasswordPage, RegisterPage } fro
 export function stormpathConfig(): StormpathConfiguration {
   let spConfig: StormpathConfiguration = new StormpathConfiguration();
   spConfig.endpointPrefix = 'http://localhost:8080';
+  spConfig.autoAuthorizedUris.push(new RegExp(spConfig.endpointPrefix + '/*'));
   return spConfig;
 }
 
