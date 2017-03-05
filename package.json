@@ -4,7 +4,7 @@
   "homepage": "https://github.com/tnt-develop-team/",
   "private": true,
   "scripts": {
-    "ionic:build": "ionic-app-scripts build",
+    "ionic:build": "ionic-app-scripts build --dev",
     "ionic:serve": "ionic-app-scripts serve",
     "e2e": "ionic-app-scripts build && protractor",
     "postinstall": "ionic state restore && webdriver-manager update",
@@ -67,5 +67,8 @@
     "type": "git",
     "url": "https://github.com/tnt-develop-team/tntapp.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "config": {
+    "ionic_source_map": "source-map"
+  }
 }
