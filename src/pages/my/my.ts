@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html'
+  selector: 'page-my',
+  templateUrl: 'my.html'
 })
-export class ContactPage {
+export class MyPage {
 
   constructor(public navCtrl: NavController) {
 
   }
 
 }
+
