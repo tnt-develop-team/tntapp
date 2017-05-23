@@ -17,6 +17,7 @@ export class NewPage {
   private id: string;
   private name: string;
   private image: string;
+  private description: string;
   constructor(public viewCtrl: ViewController) {
   }
 
@@ -28,7 +29,8 @@ export class NewPage {
     let data = {
       id: this.id,
       name: this.name,
-      image: this.image
+      image: this.image,
+      description: this.description
     };
     console.log(this.id);
     this.viewCtrl.dismiss(data);
