@@ -27,4 +27,9 @@ export class HomePage {
       });
     modal.present();
   }
+
+  deleteTool(tool) {
+    this.tools.remove(tool);
+    console.log(tool);
+  }
 }
