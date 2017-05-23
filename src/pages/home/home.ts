@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import { NavController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { NewPage } from '../new/new';
+
+
 
 @Component({
   selector: 'page-home',
@@ -11,8 +13,18 @@ export class HomePage {
 
   private tools: FirebaseListObservable<any[]>;
 
-  constructor(public navCtrl: NavController, db: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, 
+    private db: AngularFireDatabase, 
+    private modalCtrl: ModalController) {
     this.tools = db.list('/tools');
   }
 
+  newTool() {
+    let modal = this.modalCtrl.create(NewPage);
+    modal.onDidDismiss(data=> {
+        console.log(data);
+        this.tools.push(data);
+      });
+    modal.present();
+  }
 }

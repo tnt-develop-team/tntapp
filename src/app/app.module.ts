@@ -7,6 +7,7 @@ import { MyPage } from '../pages/my/my';
 import { ChatPage } from '../pages/chat/chat';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { NewPage } from '../pages/new/new';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,7 +23,8 @@ import { firebaseConfig }       from './app.config';
     MyPage,
     ChatPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    NewPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { firebaseConfig }       from './app.config';
     MyPage,
     ChatPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    NewPage
   ],
   providers: [
     StatusBar,
