@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let tool of tools">
+  <ion-list *ngFor="let tool of tools | async">
     <ion-item>
       <ion-card>
         <img src="{{tool.image}}" />
