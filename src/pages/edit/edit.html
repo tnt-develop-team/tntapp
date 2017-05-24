@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-title>Add new tool</ion-title>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+  <ion-item>
+    <ion-label fixed>id</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="tool.id"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>name</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="tool.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>image</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="tool.image"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>description</ion-label>
+    <ion-textarea value="" [(ngModel)]="tool.description"></ion-textarea>
+  </ion-item>
+
+</ion-list>
+<button ion-button block (click)="save()">Save</button>
+</ion-content>

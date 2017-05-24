@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { NewPage } from '../new/new';
+import { EditPage } from '../edit/edit';
 
 
 
@@ -31,5 +32,14 @@ export class HomePage {
   deleteTool(tool) {
     this.tools.remove(tool);
     console.log(tool);
+  }
+
+  editTool(tool) {
+    let modal = this.modalCtrl.create(EditPage, {"tool": tool});
+    modal.onDidDismiss(data=> {
+        console.log(data);
+        this.tools.update(data.$key, {description: data.description});
+      });
+    modal.present();
   }
 }

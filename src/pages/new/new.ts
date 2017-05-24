@@ -21,10 +21,6 @@ export class NewPage {
   constructor(public viewCtrl: ViewController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewPage');
-  }
-
   ok() {
     let data = {
       id: this.id,
