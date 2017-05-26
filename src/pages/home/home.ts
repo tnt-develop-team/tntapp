@@ -25,6 +25,9 @@ export class HomePage {
     this.tools = db.list('/tools');
     this.user = afAuth.authState;
   }
+  public isUserLogin(): Boolean {
+    return 
+  }
 
   newTool() {
     let modal = this.modalCtrl.create(NewPage);
@@ -50,7 +53,9 @@ export class HomePage {
   }
 
    login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then((data)=> console.log(data))
+      .catch((error) => console.log(error));
   }
 
   logout() {

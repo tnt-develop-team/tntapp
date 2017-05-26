@@ -22,6 +22,8 @@
           </p>
           <button ion-button round (click)="deleteTool(tool);"> Delete</button>
           <button ion-button round (click)="editTool(tool);"> Eidt</button>
+          <button *ngIf="(user | async)?.uid" ion-button round (click)="shareTool(tool);" > Share</button>
+          <button *ngIf="(user | async)?.uid" ion-button round (click)="requestTool(tool);"> Request</button>
         </ion-card-content>
       </ion-card>
     </ion-item>
