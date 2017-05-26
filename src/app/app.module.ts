@@ -13,8 +13,10 @@ import { EditPage } from '../pages/edit/edit';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig }       from './app.config';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 
 
@@ -48,6 +50,8 @@ import { firebaseConfig }       from './app.config';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AuthServiceProvider,
+    AngularFireAuth
   ]
 })
 export class AppModule { }

@@ -6,6 +6,9 @@
 
 <ion-content>
   <button ion-button round (click)="newTool();">Add</button>
+  <div> {{ (user | async)?.uid }} </div>
+  <button (click)="login()">Login</button>
+  <button (click)="logout()">Logout</button>
   <ion-list *ngFor="let tool of tools | async">
     <ion-item>
       <ion-card>
