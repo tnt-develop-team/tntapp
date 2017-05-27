@@ -10,27 +10,21 @@
 
 <ion-content padding>
   <ion-list>
+    <ion-item>
+      <ion-label fixed>name</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="name"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label fixed>id</ion-label>
-    <ion-input type="text" value="" [(ngModel)]="id"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label fixed>image</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="image"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label fixed>name</ion-label>
-    <ion-input type="text" value="" [(ngModel)]="name"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label fixed>description</ion-label>
+      <ion-textarea value="" [(ngModel)]="description"></ion-textarea>
+    </ion-item>
 
-  <ion-item>
-    <ion-label fixed>image</ion-label>
-    <ion-input type="text" value="" [(ngModel)]="image"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label fixed>description</ion-label>
-    <ion-textarea value="" [(ngModel)]="description"></ion-textarea>
-  </ion-item>
-
-</ion-list>
-<button ion-button block (click)="ok()">OK</button>
+  </ion-list>
+  <button ion-button block (click)="ok()">OK</button>
 </ion-content>

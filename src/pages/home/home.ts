@@ -7,6 +7,8 @@ import * as firebase from 'firebase/app';
 import { NewPage } from '../new/new';
 import { EditPage } from '../edit/edit';
 
+import { FirebaseService } from '../../providers/firebase-service/firebase-service'
+
 
 
 @Component({
@@ -21,10 +23,11 @@ export class HomePage {
   requests: FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController,
+    public firebaseService:FirebaseService, 
     private db: AngularFireDatabase,
     private modalCtrl: ModalController,
     public afAuth: AngularFireAuth) {
-    this.tools = db.list('/tools');
+    this.tools = firebaseService.getTools();
     this.shares = db.list('/shares');
     this.requests = db.list('/requests');
     this.user = afAuth.authState;
@@ -33,9 +36,8 @@ export class HomePage {
 
   newTool() {
     let modal = this.modalCtrl.create(NewPage);
-    modal.onDidDismiss(data => {
-      console.log(data);
-      this.tools.push(data);
+    modal.onDidDismiss(tool => {
+      this.firebaseService.addTool(tool);
     });
     modal.present();
   }
@@ -48,8 +50,7 @@ export class HomePage {
   editTool(tool) {
     let modal = this.modalCtrl.create(EditPage, { "tool": tool });
     modal.onDidDismiss(data => {
-      console.log(data);
-      this.tools.update(data.$key, { description: data.description });
+      this.firebaseService.updateTool(data.$key, data);
     });
     modal.present();
   }

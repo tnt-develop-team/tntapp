@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController, NavController, NavParams } from 'ionic-angular';
+import { Tool } from '../../models/tool';
 
 /**
  * Generated class for the EditPage page.
@@ -13,7 +14,7 @@ import { ViewController, NavController, NavParams } from 'ionic-angular';
 })
 export class EditPage {
 
-  private tool: any;
+  private tool: Tool;
   constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
     this.tool = navParams.get("tool");
   }

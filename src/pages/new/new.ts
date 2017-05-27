@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
+import { Tool } from '../../models/tool';
 
 /**
  * Generated class for the NewPage page.
@@ -13,8 +14,6 @@ import { ViewController } from 'ionic-angular';
   templateUrl: 'new.html',
 })
 export class NewPage {
-
-  private id: string;
   private name: string;
   private image: string;
   private description: string;
@@ -22,13 +21,7 @@ export class NewPage {
   }
 
   ok() {
-    let data = {
-      id: this.id,
-      name: this.name,
-      image: this.image,
-      description: this.description
-    };
-    console.log(this.id);
-    this.viewCtrl.dismiss(data);
+    let tool = new Tool (this.name, this.image, this.description);
+    this.viewCtrl.dismiss(tool);
   }
 }

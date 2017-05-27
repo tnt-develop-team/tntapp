@@ -16,7 +16,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig }       from './app.config';
-import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { AuthService } from '../providers/auth-service/auth-service';
+import { FirebaseService } from '../providers/firebase-service/firebase-service';
 
 
 
@@ -50,8 +51,9 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthServiceProvider,
-    AngularFireAuth
+    AuthService,
+    AngularFireAuth,
+    FirebaseService
   ]
 })
 export class AppModule { }
