@@ -16,25 +16,27 @@ import { EditPage } from '../edit/edit';
 export class HomePage {
 
   private tools: FirebaseListObservable<any[]>;
+  shares: FirebaseListObservable<any[]>;
   user: Observable<firebase.User>;
+  requests: FirebaseListObservable<any[]>;
 
-  constructor(public navCtrl: NavController, 
-    private db: AngularFireDatabase, 
+  constructor(public navCtrl: NavController,
+    private db: AngularFireDatabase,
     private modalCtrl: ModalController,
     public afAuth: AngularFireAuth) {
     this.tools = db.list('/tools');
+    this.shares = db.list('/shares');
+    this.requests = db.list('/requests');
     this.user = afAuth.authState;
   }
-  public isUserLogin(): Boolean {
-    return 
-  }
+
 
   newTool() {
     let modal = this.modalCtrl.create(NewPage);
-    modal.onDidDismiss(data=> {
-        console.log(data);
-        this.tools.push(data);
-      });
+    modal.onDidDismiss(data => {
+      console.log(data);
+      this.tools.push(data);
+    });
     modal.present();
   }
 
@@ -44,21 +46,39 @@ export class HomePage {
   }
 
   editTool(tool) {
-    let modal = this.modalCtrl.create(EditPage, {"tool": tool});
-    modal.onDidDismiss(data=> {
-        console.log(data);
-        this.tools.update(data.$key, {description: data.description});
-      });
+    let modal = this.modalCtrl.create(EditPage, { "tool": tool });
+    modal.onDidDismiss(data => {
+      console.log(data);
+      this.tools.update(data.$key, { description: data.description });
+    });
     modal.present();
   }
 
-   login() {
+  login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then((data)=> console.log(data))
+      .then((data) => console.log(data))
       .catch((error) => console.log(error));
   }
 
   logout() {
     this.afAuth.auth.signOut();
+  }
+
+  shareTool(tool) {
+    this.user.subscribe((data) => {
+      this.shares.push({
+        tool: tool.$key,
+        user: data.uid
+      });
+    });
+  }
+
+  requestTool(tool) {
+    this.user.subscribe((data) => {
+      this.requests.push({
+        tool: tool.$key,
+        user: data.uid
+      });
+    });
   }
 }
