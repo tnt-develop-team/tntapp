@@ -1,4 +1,4 @@
-import { Component  } from '@angular/core';
+import { Component, ViewChild  } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Tool } from '../../models/tool';
 
@@ -15,12 +15,16 @@ import { Tool } from '../../models/tool';
 export class SharePage {
 
   private tool: Tool;
+  @ViewChild('map') mapElement;
+  map: any;
+
   constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
     this.tool = navParams.get("tool");
   }
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad SharePage');
+    this.loadMap();
   }
 
   shareTool() {
@@ -28,4 +32,17 @@ export class SharePage {
     this.viewCtrl.dismiss(null);
   }
 
+   loadMap(){
+ 
+    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+ 
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+ 
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+ 
+  }
 }
