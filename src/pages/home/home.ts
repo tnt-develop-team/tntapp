@@ -6,7 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { NewPage } from '../new/new';
 import { EditPage } from '../edit/edit';
-
+import { SharePage } from '../share/share';
 import { FirebaseService } from '../../providers/firebase-service/firebase-service'
 
 
@@ -23,7 +23,7 @@ export class HomePage {
   requests: FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController,
-    public firebaseService:FirebaseService, 
+    public firebaseService: FirebaseService,
     private db: AngularFireDatabase,
     private modalCtrl: ModalController,
     public afAuth: AngularFireAuth) {
@@ -50,7 +50,11 @@ export class HomePage {
   editTool(tool) {
     let modal = this.modalCtrl.create(EditPage, { "tool": tool });
     modal.onDidDismiss(data => {
-      this.firebaseService.updateTool(data.$key, data);
+      if (data != null) {
+        this.firebaseService.updateTool(data.$key, data);
+      } else {
+        console.log('edit cancelled');
+      }
     });
     modal.present();
   }
@@ -66,12 +70,18 @@ export class HomePage {
   }
 
   shareTool(tool) {
-    this.user.subscribe((data) => {
-      this.shares.push({
-        tool: tool.$key,
-        user: data.uid
-      });
-    });
+    let modal = this.modalCtrl.create(SharePage, { "tool": tool });
+    // modal.onDidDismiss(
+    //   data => {
+    //     console.log('not implemented')
+    //   });
+    modal.present();
+    // this.user.subscribe((data) => {
+    //   this.shares.push({
+    //     tool: tool.$key,
+    //     user: data.uid
+    //   });
+    // });
   }
 
   requestTool(tool) {

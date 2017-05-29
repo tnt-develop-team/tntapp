@@ -1,29 +1,31 @@
-import { Component } from '@angular/core';
-import { ViewController, NavController, NavParams } from 'ionic-angular';
+import { Component  } from '@angular/core';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Tool } from '../../models/tool';
 
 /**
- * Generated class for the EditPage page.
+ * Generated class for the SharePage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 @Component({
-  selector: 'page-edit',
-  templateUrl: 'edit.html',
+  selector: 'page-share',
+  templateUrl: 'share.html',
 })
-export class EditPage {
+export class SharePage {
 
   private tool: Tool;
   constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
     this.tool = navParams.get("tool");
   }
-
-  save() {
-    this.viewCtrl.dismiss(this.tool);
+  
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad SharePage');
   }
 
-  cancel() {
+  shareTool() {
+    console.log ('not impelemeted');
     this.viewCtrl.dismiss(null);
   }
+
 }

@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { NewPage } from '../pages/new/new';
 import { EditPage } from '../pages/edit/edit';
+import { SharePage } from '../pages/share/share';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,7 +30,8 @@ import { FirebaseService } from '../providers/firebase-service/firebase-service'
     HomePage,
     TabsPage,
     NewPage,
-    EditPage
+    EditPage,
+    SharePage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { FirebaseService } from '../providers/firebase-service/firebase-service'
     HomePage,
     TabsPage,
     NewPage,
-    EditPage
+    EditPage,
+    SharePage
   ],
   providers: [
     StatusBar,
