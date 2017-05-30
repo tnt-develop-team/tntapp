@@ -1,7 +1,7 @@
-import { Component, ViewChild  } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Tool } from '../../models/tool';
-
+import { Geolocation } from '@ionic-native/geolocation';
 /**
  * Generated class for the SharePage page.
  *
@@ -18,31 +18,34 @@ export class SharePage {
   @ViewChild('map') mapElement;
   map: any;
 
-  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public geolocation: Geolocation) {
     this.tool = navParams.get("tool");
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad SharePage');
     this.loadMap();
   }
 
   shareTool() {
-    console.log ('not impelemeted');
+    console.log('not impelemeted');
     this.viewCtrl.dismiss(null);
   }
 
-   loadMap(){
- 
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
- 
-    let mapOptions = {
-      center: latLng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
- 
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
- 
+  loadMap() {
+    this.geolocation.getCurrentPosition().then((position) => {
+      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      let mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    }, (err) => {
+      console.log(err);
+    });
   }
 }

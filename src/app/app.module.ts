@@ -19,7 +19,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig }       from './app.config';
 import { AuthService } from '../providers/auth-service/auth-service';
 import { FirebaseService } from '../providers/firebase-service/firebase-service';
-
+import { Geolocation } from '@ionic-native/geolocation';
 
 
 @NgModule({
@@ -56,7 +56,8 @@ import { FirebaseService } from '../providers/firebase-service/firebase-service'
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthService,
     AngularFireAuth,
-    FirebaseService
+    FirebaseService,
+    Geolocation
   ]
 })
 export class AppModule { }
