@@ -15,14 +15,45 @@
 
 <ion-content padding>
   <ion-card>
-    <img src="{{tool.image}}" />
     <ion-card-content>
       <ion-card-title>
-        {{tool.name}}
+        Sharing ..
       </ion-card-title>
-      <p>
-        {{tool.description}}
-      </p>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="{{tool.image}}">
+        </ion-thumbnail>
+        <h2>{{tool.name}}</h2>
+      </ion-item>
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Contact Information
+          </ion-card-title>
+          <ion-item>
+            <ion-input type="text" placeholder="Email" [(ngModel)]="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Phone" value=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Address Line 1" value=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Address Line 2" value=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="City" value=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="State" value=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Zip" value=""></ion-input>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+
 
       <button ion-button round (click)="shareTool();">OK</button>
 

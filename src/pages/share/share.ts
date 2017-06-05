@@ -15,6 +15,13 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class SharePage {
 
   private tool: Tool;
+  private email: String;
+  private phone: String;
+  private address1: String;
+  private address2: String;
+  private city: String;
+  private state: String;
+  private zip: String;
   @ViewChild('map') mapElement;
   map: any;
 
@@ -31,6 +38,7 @@ export class SharePage {
   }
 
   shareTool() {
+    console.log(this.email);
     console.log('not impelemeted');
     this.viewCtrl.dismiss(null);
   }
