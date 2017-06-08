@@ -2,12 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Tool } from '../../models/tool';
 import { Geolocation } from '@ionic-native/geolocation';
-/**
- * Generated class for the SharePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
+//need this line on windows.
+declare var google;
+
 @Component({
   selector: 'page-share',
   templateUrl: 'share.html',
