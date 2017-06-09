@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Tool } from '../../models/tool';
+import { Share } from '../../models/share';
 import { Geolocation } from '@ionic-native/geolocation';
 /**
  * Generated class for the SharePage page.
@@ -38,7 +39,7 @@ export class SharePage {
   }
 
   shareTool() {
-    console.log(this.email);
+    console.log(this.tool.$key);
     console.log('not impelemeted');
     this.viewCtrl.dismiss(null);
   }

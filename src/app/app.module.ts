@@ -17,7 +17,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig }       from './app.config';
-import { AuthService } from '../providers/auth-service/auth-service';
 import { FirebaseService } from '../providers/firebase-service/firebase-service';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -54,7 +53,6 @@ import { Geolocation } from '@ionic-native/geolocation';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthService,
     AngularFireAuth,
     FirebaseService,
     Geolocation
