@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/map';
 
 import { Tool } from '../../models/tool';
+import { Share } from '../../models/share';
 
 @Injectable()
 export class FirebaseService {
@@ -23,5 +24,15 @@ export class FirebaseService {
     this.db.list('/tools').update(key, tool);
   }
 
+  getShares() {
+    return this.db.list('/shares');
+  }
 
+  addShare(share: Share) {
+    this.db.list('/shares').push(share);
+  }
+
+  updateShare(key: string,  share: Share) {
+    this.db.list('/shares').update(key, share);
+  }
 }

@@ -7,6 +7,7 @@ import * as firebase from 'firebase/app';
 import { NewPage } from '../new/new';
 import { EditPage } from '../edit/edit';
 import { SharePage } from '../share/share';
+import { User } from '../../models/user';
 import { FirebaseService } from '../../providers/firebase-service/firebase-service'
 
 
@@ -21,6 +22,7 @@ export class HomePage {
   shares: FirebaseListObservable<any[]>;
   user: Observable<firebase.User>;
   requests: FirebaseListObservable<any[]>;
+  u: User;
 
   constructor(public navCtrl: NavController,
     public firebaseService: FirebaseService,
@@ -32,7 +34,6 @@ export class HomePage {
     this.requests = db.list('/requests');
     this.user = afAuth.authState;
   }
-
 
   newTool() {
     let modal = this.modalCtrl.create(NewPage);
@@ -61,7 +62,14 @@ export class HomePage {
 
   login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then((data) => console.log(data))
+      .then((data) => { 
+        this.u = new User(data.user.uid,
+          data.user.displayName,
+        data.user.email,
+        data.user.emailVerified,
+        data.user.phoneNumber,
+        data.user.photoURL); 
+        console.log(this.u);})
       .catch((error) => console.log(error));
   }
 
@@ -71,10 +79,9 @@ export class HomePage {
 
   shareTool(tool) {
     let modal = this.modalCtrl.create(SharePage, { "tool": tool });
-    // modal.onDidDismiss(
-    //   data => {
-    //     console.log('not implemented')
-    //   });
+     modal.onDidDismiss(share => {
+      this.firebaseService.addShare(share);
+    });
     modal.present();
     // this.user.subscribe((data) => {
     //   this.shares.push({

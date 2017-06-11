@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Tool } from '../../models/tool';
+import { Share } from '../../models/share';
 import { Geolocation } from '@ionic-native/geolocation';
 
 //need this line on windows.
@@ -13,13 +14,13 @@ declare var google;
 export class SharePage {
 
   private tool: Tool;
-  private email: String;
-  private phone: String;
-  private address1: String;
-  private address2: String;
-  private city: String;
-  private state: String;
-  private zip: String;
+  private email: string;
+  private phone: string;
+  private addressLine1: string;
+  private addressLine2: string;
+  private city: string;
+  private state: string;
+  private zip: string;
   @ViewChild('map') mapElement;
   map: any;
 
@@ -38,7 +39,16 @@ export class SharePage {
   shareTool() {
     console.log(this.email);
     console.log('not impelemeted');
-    this.viewCtrl.dismiss(null);
+    let share = new Share(this.tool.$key, 
+      "someone", 
+      this.email, 
+      this.phone, 
+      this.addressLine1, 
+      this.addressLine2, 
+      this.city, 
+      this.state, 
+      this.zip);
+    this.viewCtrl.dismiss(share);
   }
 
   loadMap() {
