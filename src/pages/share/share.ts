@@ -37,7 +37,7 @@ export class SharePage {
   }
 
   shareTool() {
-    console.log(this.email);
+    console.log(this.tool.$key);
     console.log('not impelemeted');
     let share = new Share(this.tool.$key, 
       "someone", 
