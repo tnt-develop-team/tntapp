@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { NewPage } from '../new/new';
 import { EditPage } from '../edit/edit';
 import { SharePage } from '../share/share';
 import { User } from '../../models/user';
-import { FirebaseService } from '../../providers/firebase-service/firebase-service'
+import { FirebaseService } from '../../providers/firebase-service/firebase-service';
+import { SessionService } from '../../providers/session-service/session-service';
 
 
 
@@ -22,17 +22,15 @@ export class HomePage {
   shares: FirebaseListObservable<any[]>;
   user: Observable<firebase.User>;
   requests: FirebaseListObservable<any[]>;
-  u: User;
 
   constructor(public navCtrl: NavController,
     public firebaseService: FirebaseService,
     private db: AngularFireDatabase,
     private modalCtrl: ModalController,
-    public afAuth: AngularFireAuth) {
+    public sessionService: SessionService) {
     this.tools = firebaseService.getTools();
     this.shares = db.list('/shares');
     this.requests = db.list('/requests');
-    this.user = afAuth.authState;
   }
 
   newTool() {
@@ -61,20 +59,11 @@ export class HomePage {
   }
 
   login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then((data) => { 
-        this.u = new User(data.user.uid,
-          data.user.displayName,
-        data.user.email,
-        data.user.emailVerified,
-        data.user.phoneNumber,
-        data.user.photoURL); 
-        console.log(this.u);})
-      .catch((error) => console.log(error));
+    this.sessionService.login();
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.sessionService.logout();
   }
 
   shareTool(tool) {

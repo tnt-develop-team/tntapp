@@ -6,7 +6,7 @@
 
 <ion-content>
   <button ion-button round (click)="newTool();">Add</button>
-  <div> {{ (user | async)?.uid }} </div>
+  <div> {{ (sessionService.firebaseUser |async)?.uid }} </div>
   <button (click)="login()">Login</button>
   <button (click)="logout()">Logout</button>
   <ion-list *ngFor="let tool of tools | async">
@@ -24,8 +24,8 @@
           <button ion-button round (click)="editTool(tool);"> 
             <ion-icon name="star"></ion-icon>
             Eidt</button>
-          <button *ngIf="(user | async)?.uid" ion-button round (click)="shareTool(tool);"> Share</button>
-          <button *ngIf="(user | async)?.uid" ion-button round (click)="requestTool(tool);"> Request</button>
+          <button *ngIf="(sessionService.user)" ion-button round (click)="shareTool(tool);"> Share</button>
+          <button *ngIf="(sessionService.user)" ion-button round (click)="requestTool(tool);"> Request</button>
         </ion-card-content>
         <ion-item>
           <ion-icon name='musical-notes' item-start style="color: #d03e84"></ion-icon>
